@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <Label layoutX="435.0" layoutY="14.0" prefHeight="51.0" prefWidth="151.0" text="Kalender">
+      <font>
+        <Font name="Comic Sans MS" size="36.0" />
+      </font>
+    </Label>
+    <Label layoutX="28.0" layoutY="29.0" text="Monat">
+      <font>
+        <Font name="Comic Sans MS" size="14.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="30.0" layoutY="109.0" text="Template" />
+    <Pane fx:id="pn2" layoutX="28.0" layoutY="230.0" prefHeight="227.0" prefWidth="445.0" visible="false">
+      <children>
+        <Label font="$x1" text="Bild 1" />
+        <Label font="$x1" layoutX="235.0" layoutY="4.0" text="Bild 2" />
+        <Pane layoutX="235.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid;">
+          <children>
+            <ImageView fx:id="img2" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+          </children>
+        </Pane>
+        <Pane layoutY="21.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid;">
+          <children>
+            <ImageView fx:id="img1" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+          </children>
+        </Pane>
+      </children>
+    </Pane>
+    <Button fx:id="weiter" layoutX="495.0" layoutY="429.0" mnemonicParsing="false" onAction="#weiter" prefHeight="26.0" prefWidth="91.0" style="-fx-border-style: solid; -fx-background-color: white;" text="Weiter">
+      <font>
+        <Font name="Comic Sans MS" size="12.0" fx:id="x2" />
+      </font>
+    </Button>
+    <Pane fx:id="pn1" layoutX="28.0" layoutY="230.0" prefHeight="227.0" prefWidth="445.0" visible="false">
+      <children>
+        <Label font="$x1" layoutX="0.0" layoutY="0.0" text="Bild 1" />
+        <Pane fx:id="pane3" layoutX="0.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid;">
+          <children>
+            <ImageView fx:id="img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+          </children>
+        </Pane>
+      </children>
+    </Pane>
+    <Pane fx:id="pn11" layoutX="28.0" layoutY="142.0" prefHeight="42.0" prefWidth="380.0" visible="false">
+      <children>
+        <Label font="$x1" layoutY="11.0" text="Bild 1 hochladen" />
+        <Button fx:id="browse" font="$x2" layoutX="156.0" layoutY="7.0" mnemonicParsing="false" onAction="#browse" prefHeight="21.0" prefWidth="68.0" style="-fx-border-style: solid; -fx-background-color: white;" text="Browse..." />
+      </children>
+    </Pane>
+    <Pane fx:id="pn22" layoutX="28.0" layoutY="188.0" prefHeight="42.0" prefWidth="380.0" visible="false">
+      <children>
+        <Label font="$x1" layoutY="11.0" text="Bild 2 hochladen" />
+        <Button fx:id="browse2" font="$x2" layoutX="156.0" layoutY="8.0" mnemonicParsing="false" onAction="#browse2" prefHeight="28.0" prefWidth="68.0" style="-fx-border-style: solid; -fx-background-color: white;" text="Browse..." />
+      </children>
+    </Pane>
+    <Label font="$x1" layoutX="30.0" layoutY="67.0" text="Jahr" />
+    <ComboBox fx:id="cb1" layoutX="181.0" layoutY="27.0" onMouseClicked="#cb1" prefWidth="150.0" style="-fx-background-color: white; -fx-border-style: solid;" />
+    <ComboBox fx:id="cb3" layoutX="181.0" layoutY="64.0" onMouseClicked="#cb3" prefWidth="150.0" style="-fx-background-color: white; -fx-border-style: solid;" />
+    <Button fx:id="tm1" font="$x2" layoutX="181.0" layoutY="106.0" mnemonicParsing="false" onAction="#tm1" prefHeight="28.0" prefWidth="81.0" style="-fx-border-style: solid; -fx-background-color: white;" text="1 Template" />
+    <Button fx:id="tm2" font="$x2" layoutX="266.0" layoutY="106.0" mnemonicParsing="false" onAction="#tm2" prefHeight="28.0" prefWidth="91.0" style="-fx-border-style: solid; -fx-background-color: white;" text="2 Templates" />
+  </children>
+</AnchorPane>

@@ -1,28 +1,78 @@
 package ch.csbe.kalender;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.SimpleTimeZone;
-import java.util.TimeZone;
-
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
-public class KalenderAusgabe {
+public class KalenderAusgabe extends Controller {
 
 	@FXML
-	public void kalender() {
-		String[] ids = TimeZone.getAvailableIDs(-8 * 60 * 60 * 1000);
+	public Text monat;
+	@FXML
+	public Text jahr;
+	@FXML
+	public Text jahr1;
+	@FXML
+	public Pane pane1;
+	@FXML
+	public Pane pane2;
+	@FXML
+	public Pane pn3;
+	@FXML
+	public Pane pn4;
+	@FXML
+	public ImageView iv1;
+	@FXML
+	public ImageView iv2;
+	@FXML
+	public ImageView iv3;
+	@FXML
+	public Pane kalender;
+	@FXML
+	public GridPane gp;
+
+	public void kal(String monat, String jahr) {
+		this.monat.setText(monat);
+		this.jahr.setText(jahr);
+		this.monat.setTextAlignment(TextAlignment.CENTER);
+
+		if (Kalender.template == true) {
+			pn3.setVisible(true);
+			Image i = new Image("/ch/csbe/bilder/bilder.png");
+			iv1.setImage(i);
+		} else if (Kalender.template == false) {
+			pn4.setVisible(true);
+			Image i = new Image("/ch/csbe/bilder/bild1.png");
+			Image im = new Image("/ch/csbe/bilder/bild2.png");
+			iv2.setImage(i);
+			iv3.setImage(im);
+		}
 		
-		SimpleTimeZone pdt = new SimpleTimeZone(-8 * 60 * 60 * 1000, ids[0]);
+		if(monat == "Januar"){
+			
+		}
 
-		pdt.setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-		pdt.setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
+//		for (int i = 0; i < 7; i++) {
+//			for (int j = 0; j < 6; j++) {
+//				Text t = new Text("Hello");
+//
+//				GridPane.setRowIndex(t, j);
+//				GridPane.setColumnIndex(t, i);
+//
+//				gp.getChildren().addAll(t);
+//			}
+//		}
 
-		Calendar calendar = new GregorianCalendar(pdt);
-		Date trialTime = new Date();
-		calendar.setTime(trialTime);
+	}
 
+	@FXML
+	protected void weiter() {
+		Kalender k = new Kalender();
+		new Navigator().navigate(k);
 	}
 
 }

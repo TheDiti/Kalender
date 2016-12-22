@@ -3,11 +3,6 @@ package ch.csbe.kalender;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.SimpleTimeZone;
-import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +18,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 
-public class Kalender {
+public class Kalender extends Controller {
+
+	public static boolean template = true;
 
 	@FXML
 	public ComboBox<String> cb1;
@@ -47,6 +44,12 @@ public class Kalender {
 	public Pane pn2;
 	@FXML
 	public Pane pn22;
+	@FXML
+	public Pane pane3;
+	@FXML
+	public Pane pane4;
+	@FXML
+	public Pane pane5;
 
 	final FileChooser fileChooser = new FileChooser();
 
@@ -58,6 +61,7 @@ public class Kalender {
 
 	@FXML
 	protected void tm1() {
+		template = true;
 		pn1.setVisible(true);
 		pn11.setVisible(true);
 		if (pn2.isVisible() == true) {
@@ -68,6 +72,7 @@ public class Kalender {
 
 	@FXML
 	protected void tm2() {
+		template = false;
 		pn11.setVisible(true);
 		pn2.setVisible(true);
 		pn22.setVisible(true);
@@ -97,6 +102,21 @@ public class Kalender {
 				BufferedImage bufferedImage = ImageIO.read(file);
 				Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 				img.setImage(image);
+				img.setFitWidth(200);
+				img.setFitHeight(200);
+
+				File f = new File("src/ch/csbe/bilder/bilder.png");
+				if (!f.exists()) {
+					f.mkdir();
+				}
+				if (f != null) {
+					try {
+						ImageIO.write(bufferedImage, "png", f);
+					} catch (IOException ex) {
+
+					}
+				}
+
 			} catch (IOException ex) {
 				Logger.getLogger(Kalender.class.getName()).log(Level.SEVERE, null, ex);
 			}
@@ -113,6 +133,21 @@ public class Kalender {
 				BufferedImage bufferedImage = ImageIO.read(file);
 				Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 				img1.setImage(image);
+				img1.setFitWidth(200);
+				img1.setFitHeight(200);
+
+				File f = new File("src/ch/csbe/bilder/bild1.png");
+				if (!f.exists()) {
+					f.mkdir();
+				}
+				if (f != null) {
+					try {
+						ImageIO.write(bufferedImage, "png", f);
+					} catch (IOException ex) {
+
+					}
+				}
+
 			} catch (IOException ex) {
 				Logger.getLogger(Kalender.class.getName()).log(Level.SEVERE, null, ex);
 			}
@@ -134,23 +169,35 @@ public class Kalender {
 			BufferedImage bufferedImage = ImageIO.read(file);
 			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 			img2.setImage(image);
+			img2.setFitWidth(200);
+			img2.setFitHeight(200);
+
+			File f = new File("src/ch/csbe/bilder/bild2.png");
+			if (!f.exists()) {
+				f.mkdir();
+			}
+			if (f != null) {
+				try {
+					ImageIO.write(bufferedImage, "png", f);
+				} catch (IOException ex) {
+
+				}
+			}
+
 		} catch (IOException ex) {
 			Logger.getLogger(Kalender.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
 	}
 
-	public void kalender() {
-		String[] ids = TimeZone.getAvailableIDs(-8 * 60 * 60 * 1000);
-		
-		SimpleTimeZone pdt = new SimpleTimeZone(-8 * 60 * 60 * 1000, ids[0]);
+	protected void weiter() {
 
-		pdt.setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-		pdt.setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
+		KalenderAusgabe ka = new KalenderAusgabe();
+		new Navigator().navigate(ka);
 
-		Calendar calendar = new GregorianCalendar(pdt);
-		Date trialTime = new Date();
-		calendar.setTime(trialTime);
+		String monat = cb1.getSelectionModel().getSelectedItem().toString();
+		String jahr = cb3.getSelectionModel().getSelectedItem().toString();
+		ka.kal(monat, jahr);
 
 	}
 
