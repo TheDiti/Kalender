@@ -1,0 +1,1 @@
+Bilder können mit der Runable JAR-File nicht gespeichert und ausgelesen werden.

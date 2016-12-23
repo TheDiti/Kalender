@@ -1,5 +1,9 @@
 package ch.csbe.kalender;
-
+/**
+ * 
+ * @author Endrit Lena
+ * 
+ */
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +21,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
-
+/**
+ * 
+ * Dies ist die Kalender Klasse. Hier werden Monat, Jahr und
+ * Templates zur verfügung gestellt und Bilder können noch 
+ * ausgewählt werden
+ *
+ */
 public class Kalender extends Controller {
 
 	public static boolean template = true;
@@ -53,12 +63,14 @@ public class Kalender extends Controller {
 
 	final FileChooser fileChooser = new FileChooser();
 
+	//Hier kann man einen Monat auswählen
 	@FXML
 	protected void cb1() {
 		cb1.setItems(FXCollections.observableArrayList("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli",
 				"August", "September", "Oktober", "November", "Dezember"));
 	}
 
+	//durch benutzung von tm1() wird nur ein Template ausgewählt
 	@FXML
 	protected void tm1() {
 		template = true;
@@ -70,6 +82,7 @@ public class Kalender extends Controller {
 		}
 	}
 
+	//durch benutzung von tm2() werden zwei Templates ausgewählt
 	@FXML
 	protected void tm2() {
 		template = false;
@@ -81,11 +94,13 @@ public class Kalender extends Controller {
 		}
 	}
 
+	//Hier kann man ein Jahr auswählen
 	@FXML
 	protected void cb3() {
-		cb3.setItems(FXCollections.observableArrayList("2017", "2018", "2019", "2020"));
+		cb3.setItems(FXCollections.observableArrayList("2016","2017", "2018", "2019", "2020"));
 	}
 
+	//mit browse() kann man für tm1() ein bild auswhälen
 	@FXML
 	protected void browse() {
 
@@ -155,6 +170,7 @@ public class Kalender extends Controller {
 		}
 	}
 
+	//mit browse2() kann man für tm2() zwei Bilder auswählen
 	@FXML
 	protected void browse2() {
 		FileChooser fileChooser = new FileChooser();
@@ -190,6 +206,7 @@ public class Kalender extends Controller {
 
 	}
 
+	//Durch weiter() wird zu KalenderAusgabe gewechselt
 	protected void weiter() {
 
 		KalenderAusgabe ka = new KalenderAusgabe();
